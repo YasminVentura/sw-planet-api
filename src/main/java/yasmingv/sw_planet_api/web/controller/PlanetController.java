@@ -23,5 +23,11 @@ public class PlanetController {
         Planet planetCreated = planetService.create(planet);
         return ResponseEntity.status(HttpStatus.CREATED).body(planetCreated);
     }
+
+    @GetMapping
+    public ResponseEntity<Planet> getById(@PathVariable("id") Long id) {
+       return planetService.getById(id).map(planet -> ResponseEntity.ok(planet))
+               .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }
 
