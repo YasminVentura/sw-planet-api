@@ -1,4 +1,4 @@
-package yasmingv.sw_planet_api.domain.entity;
+package yasmingv.sw_planet_api.domain;
 
 import jakarta.persistence.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -18,6 +18,11 @@ public class Planet {
     private String terrain;
 
     public Planet() {
+    }
+
+    public Planet(String climate, String terrain) {
+        this.climate = climate;
+        this.terrain = terrain;
     }
 
     public Planet(String name, String climate, String terrain) {
