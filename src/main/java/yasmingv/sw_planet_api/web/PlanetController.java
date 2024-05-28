@@ -1,4 +1,4 @@
-package yasmingv.sw_planet_api.web.controller;
+package yasmingv.sw_planet_api.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
