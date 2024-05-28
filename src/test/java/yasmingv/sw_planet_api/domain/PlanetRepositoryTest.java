@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DataJpaTest
 public class PlanetRepositoryTest {
@@ -31,4 +32,14 @@ public class PlanetRepositoryTest {
         assertThat(sut.getClimate()).isEqualTo(PLANET.getClimate());
         assertThat(sut.getTerrain()).isEqualTo(PLANET.getTerrain());
     }
+
+    @Test
+    public void createPlanet_WithInvalidDate_ThrowsException(){
+        Planet empyPlanet = new Planet();
+        Planet invalidPlanet = new Planet("", "", "");
+
+        assertThatThrownBy(() -> planetRepository.save(empyPlanet)).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> planetRepository.save(invalidPlanet)).isInstanceOf(RuntimeException.class);
+    }
+
 }
