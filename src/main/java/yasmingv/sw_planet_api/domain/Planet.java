@@ -1,13 +1,18 @@
 package yasmingv.sw_planet_api.domain;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 @Entity
 @Table(name = "planets")
 public class Planet {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,6 +38,13 @@ public class Planet {
     }
 
     public Planet(String name, String climate, String terrain) {
+        this.name = name;
+        this.climate = climate;
+        this.terrain = terrain;
+    }
+
+    public Planet(Long id, String name, String climate, String terrain) {
+        this.id = id;
         this.name = name;
         this.climate = climate;
         this.terrain = terrain;

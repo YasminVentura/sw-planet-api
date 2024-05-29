@@ -3,12 +3,11 @@ package yasmingv.sw_planet_api.domain;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.query.spi.QueryEngine;
 import org.springframework.data.domain.Example;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 
-public interface PlanetRepository extends CrudRepository <Planet, Long>, QueryByExampleExecutor<Planet> {
+public interface PlanetRepository extends CrudRepository<Planet, Long>, QueryByExampleExecutor<Planet> {
     Optional<Planet> findByName(String name);
 
     @Override
