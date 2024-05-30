@@ -42,4 +42,13 @@ public class PlanetIT {
         assertThat(sut.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(sut.getBody()).isEqualTo(TATOOINE);
     }
+
+    @Test
+    public void getPlanetByName_ReturnsPlanet() {
+        ResponseEntity<Planet> sut = restTemplate.getForEntity("/planets/name/" + TATOOINE.getName(), Planet.class);
+
+        assertThat(sut.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(sut.getBody()).isEqualTo(TATOOINE);
+    }
+
 }
